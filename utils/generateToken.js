@@ -13,6 +13,8 @@ module.exports = async function (savedUser) {
   }
 };
 
+
+
 // // Generate and send token
 // const token = await randomTokenGen()
 // const userToken = new Token({ _userId: savedUser._id, token: token })
