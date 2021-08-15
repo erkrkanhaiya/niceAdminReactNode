@@ -25,7 +25,7 @@ app.use(morgan('tiny'));
 // Connect to DB
 connectDB();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 // Middleware
 // app.use(express.json())
