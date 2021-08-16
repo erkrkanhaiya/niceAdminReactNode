@@ -50,4 +50,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-module.exports = app.listen(port, () => console.log('Server up and running'));
+module.exports = app.listen(port, () => console.log(`Server up and running ${port}`));
