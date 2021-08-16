@@ -14,7 +14,7 @@ const LoginForm = ({ history }) => {
   const openNotification = () => {
     const args = {
       message: 'Login Details',
-      description: 'Email: test@gmail.com password: testing',
+      description: 'Email: testing@testing.com password: asdasdasd',
       duration: 0
     };
     notification.open(args);
