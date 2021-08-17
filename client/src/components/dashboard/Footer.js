@@ -8,21 +8,21 @@ function CustomFooter() {
     <div>
       <Footer style={{ textAlign: 'center' }}>
         Built with ❤️ by{' '}
-        <a
+        {/* <a
           href="https://onasanyatunde.codes"
           rel="noopener noreferrer"
           target="_blank"
         >
           Onasanya Babatunde
-        </a>
-        |
-        <a
+        </a> */}
+        | Incredible
+        {/* <a
           href="https://github.com/rammyblog/MERN-Admin-Dashboard"
           rel="noopener noreferrer"
           target="_blank"
         >
           Github Repo
-        </a>
+        </a> */}
       </Footer>
     </div>
   );

@@ -6,8 +6,10 @@ import SingleUser from './components/dashboard/SingleUser/SingleUser';
 import LoginForm from './components/auth/Login';
 import checkAdminAuth from './helpers/AdminAuth';
 import AddNewUser from './components/dashboard/AddNewUser';
+import AddnewResaturent from './components/dashboard/AddnewResaturent';
 import MissingPage from './components/Error/404';
 import Home from './components/Home';
+import RestaurentListPage from './components/dashboard/RestaurentListPage';
 
 export const PrivateAdminRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -28,10 +30,17 @@ const BaseRoute = () => (
     <Route exact path="/" component={Home} />
     <PrivateAdminRoute exact path="/dashboard" component={Dashboard} />
     <PrivateAdminRoute exact path="/dashboard/users" component={UserListPage} />
+    <PrivateAdminRoute exact path="/dashboard/restaurent" component={RestaurentListPage} />
     <PrivateAdminRoute
       exact
       path="/dashboard/add-new-user"
       component={AddNewUser}
+    />
+
+    <PrivateAdminRoute
+      exact
+      path="/dashboard/add-new-resaturent"
+      component={AddnewResaturent}
     />
 
     <PrivateAdminRoute

@@ -5,7 +5,8 @@ import { Form, Input, Button, Select, Switch, Tooltip } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
-  QuestionCircleOutlined
+  QuestionCircleOutlined,
+  PicCenterOutlined
 } from '@ant-design/icons';
 
 function UserForm({ user, onFinish, changePasswordModal, loading }) {
@@ -23,8 +24,45 @@ function UserForm({ user, onFinish, changePasswordModal, loading }) {
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={12}>
             <Form.Item
-              name="name"
-              label="Full Name"
+              name="restaurentname"
+              label="Restaurent Full Name"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input full name!'
+                }
+              ]}
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Nibs Restaurent"
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              name="address"
+              label="Address"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input Address!'
+                }
+              ]}
+            >
+              <Input
+                prefix={<PicCenterOutlined className="site-form-item-icon" />}
+                placeholder="Veshali nagar, jaipur"
+              />
+            </Form.Item>
+          </Col>
+
+
+          <Col span={12}>
+            <Form.Item
+              name="mobile"
+              label="Restaurent Phone Number"
               rules={[
                 {
                   required: true,
@@ -38,7 +76,64 @@ function UserForm({ user, onFinish, changePasswordModal, loading }) {
               />
             </Form.Item>
           </Col>
+
           <Col span={12}>
+            <Form.Item
+              name="email"
+              label="Email"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your email!'
+                }
+              ]}
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Email"
+              />
+            </Form.Item>
+          </Col>
+
+
+          <Col span={12}>
+            <Form.Item
+              name="ownername"
+              label="Owner name"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input full name!'
+                }
+              ]}
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="John Doe"
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              name="mobile"
+              label="Owner Phone number"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your mobile!'
+                }
+              ]}
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="mobile"
+              />
+            </Form.Item>
+          </Col>
+
+
+          {/* <Col span={12}>
             <Form.Item
               label={
                 user ? (
@@ -65,11 +160,11 @@ function UserForm({ user, onFinish, changePasswordModal, loading }) {
                 user
                   ? []
                   : [
-                      {
-                        required: true,
-                        message: 'Please input your Password!'
-                      }
-                    ]
+                    {
+                      required: true,
+                      message: 'Please input your Password!'
+                    }
+                  ]
               }
               name="password"
             >
@@ -83,7 +178,7 @@ function UserForm({ user, onFinish, changePasswordModal, loading }) {
                 value={user ? 'rtfgyhuj' : ''}
               />
             </Form.Item>
-          </Col>
+          </Col> */}
         </Row>
 
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>

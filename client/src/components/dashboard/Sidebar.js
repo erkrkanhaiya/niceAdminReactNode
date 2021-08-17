@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Typography } from 'antd';
-import { UserOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
+import { UserOutlined, HomeOutlined, SettingOutlined, DownCircleFilled, DeliveredProcedureOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import SidebarStyled from './SidebarStyled';
 
@@ -14,15 +14,15 @@ function Sidebar({ collapsed, index, loggedInUserId }) {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        // style={{
-        //   overflow: 'auto',
-        //   height: '100vh',
-        //   position: 'fixed',
-        //   left: 0
-        // }}
+      // style={{
+      //   overflow: 'auto',
+      //   height: '100vh',
+      //   position: 'fixed',
+      //   left: 0
+      // }}
       >
         <div className="logo">
-          <Title level={2}>MERN DASH</Title>
+          <Title level={2}>SUPER ADMIN</Title>
         </div>
         <Menu
           theme="dark"
@@ -35,12 +35,20 @@ function Sidebar({ collapsed, index, loggedInUserId }) {
               Dashboard
             </Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
+
+          <Menu.Item key="2" icon={<DeliveredProcedureOutlined />}>
+            <Link className="text-white" to="/dashboard/restaurent">
+              Add Restaurent
+            </Link>
+          </Menu.Item>
+
+
+          <Menu.Item key="3" icon={<UserOutlined />}>
             <Link className="text-white" to="/dashboard/users">
               Users
             </Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<SettingOutlined />}>
+          <Menu.Item key="4" icon={<SettingOutlined />}>
             <Link to={`/dashboard/user/${loggedInUserId}`}></Link>
             Account Settings
           </Menu.Item>
