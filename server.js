@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 const postRoute = require('./routes/post');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
+const restaurentRouter = require('./routes/restaurent');
 
 const docsRoute = require('./routes/docs');
 const connectDB = require('./config/db');
@@ -36,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(cors());
 // Route middlewares
+
+app.use('/api/restaurent', restaurentRouter);
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
 app.use('/api/v1', docsRoute);
