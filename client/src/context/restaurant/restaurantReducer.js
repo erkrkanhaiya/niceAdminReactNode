@@ -1,74 +1,73 @@
-import * as types from './userActionTypes';
+import * as types from './restaurantActionTypes';
 
 export default (state, action) => {
   switch (action.type) {
-    case types.USER_START:
+    case types.RESTAURANT_START:
       return {
         ...state,
         loading: true,
         message: null,
-        user: null,
+        restaurant: null,
         error: null
       };
 
-    case types.USER_SUCCESS:
+    case types.RESTAURANT_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: action.payload
+        restaurants: action.payload
       };
-    case types.GET_LOGGED_IN_USER:
+    case types.GET_LOGGED_IN_RESTAURANT:
       return {
         ...state,
         loading: false,
         me: action.payload
       };
-    case types.GET_USER:
+    case types.GET_RESTAURANT:
       return {
         ...state,
         loading: false,
-        user: action.payload,
+        restaurant: action.payload,
         error: false,
         errResponse: ''
       };
-    case types.USER_ADD:
+    case types.RESTAURANT_ADD:
       return {
-        ...state,
-        users: [action.payload, ...state.users],
+        restaurants: [action.payload, ...state.restaurants],
         loading: false,
         error: false,
         errResponse: '',
         message: 'Add success'
       };
 
-    case types.USER_EDIT:
-      const tempState = state.users
+    case types.RESTAURANT_EDIT:
+      const tempState = state.restaurants
         .slice()
         .filter((data) => data._id !== action.payload._id);
 
       return {
         ...state,
-        users: [action.payload, ...tempState],
+        restaurants: [action.payload, ...tempState],
         loading: false,
         error: false,
         errResponse: '',
-        user: action.payload,
+        restaurant: action.payload,
         message: 'Edited success'
       };
 
-    case types.USER_DELETE:
+    case types.RESTAURANT_DELETE:
       return {
         ...state,
-        users: [
-          ...state.users.slice().filter((data) => data._id !== action.payload)
+        restaurants: [
+          ...state.restaurants.slice().filter((data) => data._id !== action.payload)
         ],
         loading: false,
         error: false,
         errResponse: '',
-        user: null,
+        restaurant: null,
         message: 'Deleted successfully'
       };
-    case types.USER_PASSWORD_CHANGE:
+    case types.RESTAURANT_PASSWORD_CHANGE:
       return {
         ...state,
         loading: false,
@@ -76,23 +75,23 @@ export default (state, action) => {
         errResponse: '',
         message: 'Password change success'
       };
-    case types.GET_USERS_BY_MONTH:
+    case types.GET_RESTAURANTS_BY_MONTH:
       return {
         ...state,
         loading: false,
-        usersByMonth: action.payload,
+        restaurantsByMonth: action.payload,
         error: false,
         errResponse: ''
       };
 
-    case types.USER_FAILURE:
+    case types.RESTAURANT_FAILURE:
       return {
         ...state,
         loading: false,
         error: true,
         errResponse: action.payload
       };
-    case types.USER_RESET:
+    case types.RESTAURANT_RESET:
       return {
         ...state,
         loading: false,

@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import DashboardHOC from './DashboardHOC';
-import UserTable from './table/UserTable';
-import { UserContext } from '../../context/userState/userContext';
+import RestaurantTable from './table/RestaurantTable';
 import { Link } from 'react-router-dom';
 import CustomLoader from '../common/CustomLoader';
+import { RestaurantContext } from '../../context/restaurant/restaurantContext';
 
 const index = '2';
-function UserListPage() {
-  const { users, loading } = useContext(UserContext).state;
+function RestaurantListPage() {
+  const { restaurants, loading } = useContext(RestaurantContext).restaurantState;
 
   return (
     <div>
@@ -15,15 +15,15 @@ function UserListPage() {
         to="/dashboard/add-new-resaturent"
         className="btn btn-primary float-right cursor-pointer mb-2 "
       >
-        Add new Resaturent
+        Add new Restaurant
       </Link>
       {!loading ? (
-        <UserTable data={users} />
+        <RestaurantTable data={restaurants} />
       ) : (
-        <CustomLoader text={'Getting users from DB! Hold on gee...'} />
+        <CustomLoader text={'Getting Restaurants List from DB! Hold on gee...'} />
       )}
     </div>
   );
 }
 
-export default DashboardHOC(UserListPage, index);
+export default DashboardHOC(RestaurantListPage, index);

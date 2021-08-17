@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
-import UserForm from './form/UserForm';
+import RestaurantForm from './form/RestaurantForm';
 import DashboardHOC from './DashboardHOC';
-import { UserContext } from '../../context/userState/userContext';
+import { RestaurantContext } from '../../context/restaurant/restaurantContext';
 
-function AddnewResaturent() {
-  const { addUser } = useContext(UserContext);
+function AddNewRestaurant() {
+  const { addRestaurant } = useContext(RestaurantContext);
   const onFinish = (values) => {
     console.log(values);
-    addUser(values);
+    addRestaurant(values);
   };
   return (
     <>
-      <UserForm onFinish={onFinish} />
+      <RestaurantForm onFinish={onFinish} />
     </>
   );
 }
 
-export default DashboardHOC(AddnewResaturent);
+export default DashboardHOC(AddNewRestaurant);

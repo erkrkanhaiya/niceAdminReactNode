@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import PageHeader from './PageHeader';
 import { Layout, message } from 'antd';
 import { UserContext } from '../../context/userState/userContext';
+import { RestaurantContext } from '../../context/restaurant/restaurantContext';
 import CustomFooter from './Footer';
 
 function DashboardHOC(Component, index) {
@@ -12,6 +13,7 @@ function DashboardHOC(Component, index) {
       setCollapsed(!collapsed);
     };
     const { state, UserReset } = useContext(UserContext);
+    const { restaurantState, RestaurantReset } = useContext(RestaurantContext);
     // const { AuthReset } = useContext(AuthReset);
     const {
       error,
@@ -19,19 +21,35 @@ function DashboardHOC(Component, index) {
       message: userMessage,
       me: loggedInUser
     } = state;
+
+    const {
+      restaurantError,
+      restaurantErrResponse,
+      message: restaurantMessage
+    } = restaurantState;
+
+
     useEffect(() => {
       if (error) {
         message.error(errResponse);
         UserReset();
       }
-    }, [error]);
+      if (restaurantError){
+        message.error(restaurantErrResponse);
+        RestaurantReset();
+      }
+    }, [error, restaurantError]);
 
     useEffect(() => {
       if (userMessage) {
         message.success(userMessage);
         UserReset();
       }
-    }, [userMessage]);
+      if(restaurantMessage){
+        message.success(restaurantMessage);
+        RestaurantReset();
+      }
+    }, [userMessage, restaurantMessage]);
     const { history } = props;
 
     return (
