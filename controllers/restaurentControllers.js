@@ -17,6 +17,7 @@ const randomTokenGen = require('../utils/generateToken');
 const passwordEncrypt = require('../utils/passwordEncrypt');
 const { getUser } = require('../services/user.services');
 const { getToken } = require('../services/Token.services');
+const { getallRestaurents } = require('../services/restaurent.services');
 
 const validation = {
   register: registerValidation,
@@ -41,14 +42,14 @@ const addrestaurent = async (req, res) => {
   // Validate data before creating a user
   //   Hash password
   try {
-    await handleValidation(req.body, res, 'addrestaurent');
-    //   Checking if the user is already in the db
-    const emailExist = await User.findOne({ email: req.body.email });
+    // await handleValidation(req.body, res, 'addrestaurent');
+    // //   Checking if the user is already in the db
+    // const emailExist = await User.findOne({ email: req.body.email });
 
-    if (emailExist) {
-      return res.status(400).json({ error_msg: 'E-Mail already exists' });
-    }
-    req.body.password = await passwordEncrypt(req.body.password);
+    // if (emailExist) {
+    //   return res.status(400).json({ error_msg: 'E-Mail already exists' });
+    // }
+    // req.body.password = await passwordEncrypt(req.body.password);
 
     // Create a new user
     const restaurent = new Restaurent(req.body);
@@ -65,6 +66,16 @@ const addrestaurent = async (req, res) => {
     return res.status(201).json({ data: savedrestaurent });
   } catch (err) {
     console.log({ err });
+    return res.status(400).json({ error_msg: err.message });
+  }
+};
+
+const getAllRestaurent = async (req, res) => {
+  try {
+    const totalRestaurent = await getallRestaurents({});
+
+    return res.status(200).json({ data: totalRestaurent });
+  } catch (err) {
     return res.status(400).json({ error_msg: err.message });
   }
 };
@@ -253,6 +264,7 @@ const changePassword = async (req, res) => {
 module.exports = {
   registerUser,
   addrestaurent,
+  getAllRestaurent,
   loginUser,
   verifyUserRegistration,
   resendVerificationToken,
