@@ -11,11 +11,26 @@ const {
   editUserAction,
   deleteUserAction
 } = require('../controllers/userController');
+
+const {
+  registerUser,
+  addrestaurent,
+  loginUser,
+  verifyUserRegistration,
+  resendVerificationToken,
+  sendPasswordResetToken,
+  passwordReset,
+  changePassword
+} = require('../controllers/restaurentControllers');
+
 const ConvertIntToMonth = require('../helpers/ConvertIntToMonth');
 const User = require('../models/User');
 
 router.get('/', ensureAuth, getAllUsers);
 router.get('/me', ensureAuth, getLoggedInUser);
+
+router.post('/addrestaurent', addrestaurent);
+
 
 router.get('/active', ensureAuth, getAllActiveUsers);
 router.get('/single/:id', getSingleUser);
